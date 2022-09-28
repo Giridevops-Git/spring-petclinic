@@ -15,7 +15,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh '/opt/apache-maven-3.8.6/bin/mvn package'
+                sh '/usr/share/maven/bin/mvn package'
             }
         }
         stage('archive results') {
