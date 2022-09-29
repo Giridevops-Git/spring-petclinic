@@ -15,8 +15,8 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh '/opt/apache-maven-3.8.6/mvn package'
-                sh "/opt/apache-maven-3.8.6/mvn ${params.MAVEN_GOAL}"
+                sh '/opt/apache-maven-3.8.6/bin/mvn package'
+                sh "/opt/apache-maven-3.8.6/bin/mvn ${params.MAVEN_GOAL}"
             }
         }
         stage('archive results') {
