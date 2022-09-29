@@ -1,21 +1,22 @@
-pipeline { 
-    agent  any
+pipeline {
+    agent  { label 'JAVA-8-MVN' }
+    parameters {
+        choice(name: 'BRANCH_TO_BUILD', choices: ['REAL_2.0.1', 'REAL_1.0.1','main','master'], description: 'Branch to build')
+        string(name: 'MAVEN_GOAL', defaultValue: 'package', description: 'maven goal')
+
+    }
     stages {
-        stage ('test') {
-            steps{
-                sh 'echo hello'
-            }
-        }
-        stage('learnig') {
-            agent { label 'JAVA-8-MVN' }
+        stage('vcs') {
             steps {
-                git url: 'https://github.com/Giridevops-Git/spring-petclinic.git',
-                    branch: 'REAL_2.0.1'
+                git branch: 'REAL_2.0.1', url: 'https://github.com/Giridevops-Git/spring-petclinic.git'
+                git branch: "${params.BRANCH_TO_BUILD}", url: 'https://github.com/Giridevops-Git/spring-petclinic.git'
             }
+
         }
         stage('build') {
             steps {
                 sh '/usr/share/maven/bin/mvn package'
+                sh "/usr/share/maven/bin/mvn ${params.MAVEN_GOAL}"
             }
         }
         stage('archive results') {
@@ -23,7 +24,5 @@ pipeline {
                 junit '**/surefire-reports/*.xml'
             }
         }
-
     }
 }
-
