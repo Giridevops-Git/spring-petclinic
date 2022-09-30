@@ -36,7 +36,7 @@ pipeline {
                   to: 'giriaws2022@gmail.com'
         }
         failure {
-            mail subject: "Build Failed for Jenkins JOB $env.JOB_NAME with Build ID, 
+            mail subject: "Build Failed for Jenkins JOB $env.JOB_NAME with Build ID", 
                   body: "Build Failed for Jenkins JOB $env.JOB_NAME", 
                   to: 'giriaws2022@gmail.com' 
         }
