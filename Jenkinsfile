@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('vcs') {
             steps {
-                mail subject: "Build Started for Jenkins JOB $env.JOB_NAME"', 
+                mail subject: "Build Started for Jenkins JOB $env.JOB_NAME", 
                   body: "Build Started for Jenkins JOB $env.JOB_NAME", 
                   to: 'giriaws2022@gmail.com'
                 git branch: 'REAL_2.0.1', url: 'https://github.com/Giridevops-Git/spring-petclinic.git'
