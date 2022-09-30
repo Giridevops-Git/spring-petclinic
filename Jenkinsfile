@@ -32,7 +32,7 @@ pipeline {
         always {
             echo 'Job completed'
             mail subject: "Build Completed for Jenkins JOB $env.JOB_NAME", 
-                  body: "Build Completed for Jenkins JOB $env.JOB_NAME \n Click Here: $env.JOB_URL",, 
+                  body: "Build Completed for Jenkins JOB $env.JOB_NAME \n Click Here: $env.JOB_URL", 
                   to: 'giriaws2022@gmail.com'
         }
         failure {
