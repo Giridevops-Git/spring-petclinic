@@ -12,8 +12,8 @@ pipeline {
     stages {
         stage('vcs') {
             steps {
-                mail subject: 'Build Started', 
-                  body: 'Build Started', 
+                mail subject: "Build Started for Jenkins JOB $env.JOB_NAME"', 
+                  body: "Build Started for Jenkins JOB $env.JOB_NAME", 
                   to: 'giriaws2022@gmail.com'
                 git branch: 'REAL_2.0.1', url: 'https://github.com/Giridevops-Git/spring-petclinic.git'
                 git branch: "${params.BRANCH_TO_BUILD}", url: 'https://github.com/Giridevops-Git/spring-petclinic.git'
@@ -31,13 +31,13 @@ pipeline {
     post {
         always {
             echo 'Job completed'
-            mail subject: 'Build Completed', 
-                  body: 'Build Completed', 
+            mail subject: "Build Completed for Jenkins JOB $env.JOB_NAME", 
+                  body: "Build Completed for Jenkins JOB $env.JOB_NAME \n Click Here:, 
                   to: 'giriaws2022@gmail.com'
         }
         failure {
-            mail subject: 'Build Failed', 
-                  body: 'Build Failed', 
+            mail subject: "Build Failed for Jenkins JOB $env.JOB_NAME with Build ID, 
+                  body: "Build Failed for Jenkins JOB $env.JOB_NAME", 
                   to: 'giriaws2022@gmail.com' 
         }
         success {
