@@ -6,7 +6,7 @@ pipeline {
       stages {
         stage('vcs') {
             steps {
-                git branch: "jfd3_0.1", url: 'https://github.com/Giridevops-Git/spring-petclinic.git'
+                git branch: "jfd_3.0.1 ", url: 'https://github.com/Giridevops-Git/spring-petclinic.git'
             }
         }
          stage ('Artifactory configuration') {
